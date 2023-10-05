@@ -17,4 +17,4 @@ jobs:
 
       - name: Hacer deploy
         run: |
-          surge --project ./ --domain $SURGE_SUBDOMAIN --token ${{ secrets.SURGE_API_KEY }}
+          surge --project ./ --domain devops1.surge.sh --token ${{ secrets.SURGE_API_KEY }}
