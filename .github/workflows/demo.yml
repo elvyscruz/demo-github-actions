@@ -1,14 +1,19 @@
-name: Hola Mundo
+name: Deploy to Surge
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Imprimir "Hola Mundo"
-        run: echo "Hola Mundo"
+      - name: Desplegar en Surge.sh
+        run: |
+          npm install --global surge
+          surge --project ./ --domain $SURGE_SUBDOMAIN --token ${{ secrets.SURGE_API_KEY }}
